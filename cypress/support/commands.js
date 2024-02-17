@@ -11,6 +11,19 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', () => {
+    cy.visit('https://demo.snipeitapp.com/login');
+    cy.get("#username").click;
+    cy.get("#username").type("admin");
+    cy.get("#password").click;
+    cy.get("#password").type("password");
+    // cy.get(".form-control > input").not("[disabled]").check();
+    cy.get(".form-control > input")
+      .not("[disabled]")
+      .uncheck()
+      .should("not.be.checked");
+    cy.get(".btn").click();
+  });
 //
 //
 // -- This is a child command --
